@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+  char* str = "1234 678\n901\n2345 7890";
+  printf("%s \n", str);
+  
+  int characters = 0;
+  int words = 0;
+  int index = 0;
+  int lines = 0; 
+ 
+  if (str != NULL) 
+    { 
+       lines = 1;
+       characters = 1;
+       if (isalnum(str[0]))
+	 words = 1;
+       index++;
+
+       while((str[index]) != '\0') 
+       {
+          characters++;
+  
+          if (str[index] == '\n')
+          {
+            characters--;
+            lines++;
+          }
+               
+              if (!isalnum(str[index -1]) && (isalnum(str[index])))
+	        {
+	          words++;
+                }
+
+	  index++;
+       }
+    }
+  printf("characters %d\n", characters);
+  printf("lines %d\n", lines);
+  printf("words %d\n", words);
+  return 0;
+}
